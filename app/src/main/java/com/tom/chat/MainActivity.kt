@@ -15,13 +15,14 @@ class MainActivity : AppCompatActivity() {
 //    private val TAG = MainActivity::class.java.simpleName
     
     lateinit var binding : ActivityMainBinding
+    //設置一個可變的list用來放fragment
     val fragments = mutableListOf<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        //執行按底下按鈕切換fragment的動作
         initFragments()
         binding.buttonNavBar.setOnItemSelectedListener { item ->
             when(item.itemId) {
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
+    //在方法內在fragments裡放入不同的fragment，並讓一開始可以顯示HomeFragment
     private fun initFragments() {
         fragments.add(0,HomeFragment())
         fragments.add(1,SearchFragment())
